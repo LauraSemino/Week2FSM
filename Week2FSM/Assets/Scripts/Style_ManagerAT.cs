@@ -37,14 +37,14 @@ namespace NodeCanvas.Tasks.Actions {
 			scoreMult = 1f;
 			if (localStyle.value >= 0 && timer >= 1)
 			{
-                //localStyle.value -= scoreMult;
+                localStyle.value -= scoreMult;
 				timer = 0;
             }
 			if (localStyle.value < 0)
 			{
 				localStyle.value = 0;
 			}
-			
+			styleTXT.text = ("Style: " + localStyle.value);
 			//agentBlackboard.SetVariableValue<float>("Style", localStyle);
 		}
 

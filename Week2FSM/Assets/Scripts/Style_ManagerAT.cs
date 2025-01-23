@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class Style_Manager : ActionTask {
+	public class Style_ManagerAT : ActionTask {
 		public Blackboard agentBlackboard;
 		public BBParameter<GameObject> Input;
 		float localStyle;
@@ -30,7 +30,7 @@ namespace NodeCanvas.Tasks.Actions {
 			
 			localStyle = agentBlackboard.GetVariableValue<float>("Style");
 			localStyle -= Time.deltaTime;
-			agentBlackboard.SetVariableValue<float>("Style", localStyle);
+			//agentBlackboard.SetVariableValue<float>("Style", localStyle);
 		}
 
 		//Called when the task is disabled.

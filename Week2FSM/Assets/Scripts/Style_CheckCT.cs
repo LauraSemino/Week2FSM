@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Conditions {
 
-	public class Style_Check : ConditionTask {
+	public class Style_CheckCT : ConditionTask {
 
 		float requiredStyle;
 		//Use for initialization. This is called only once in the lifetime of the task.
@@ -26,7 +26,14 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-			return true;
+			if (requiredStyle > 0)
+			{
+                return true;
+            }
+			else
+			{
+				return false;
+			}
 		}
 	}
 }

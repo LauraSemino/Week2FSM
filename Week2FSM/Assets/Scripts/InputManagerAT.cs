@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class InputManager : ActionTask {
+	public class InputManagerAT : ActionTask {
         public Blackboard agentBlackboard;
 		public BBParameter<int> currentInput;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
             agentBlackboard = agent.GetComponent<Blackboard>();
-			currentInput = 1;
+			//currentInput = 1;
             return null;
 		}
 
@@ -21,13 +21,13 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
 
-            if (currentInput.ConvertTo<int>() < 4)
+            if (currentInput.value <= 4)
 			{
-                currentInput = inputSequence;
+                currentInput.value ++;
             }
-			if (currentInput.ConvertTo<int>() >= 4)
+			if (currentInput.value > 4)
 			{
-				currentInput = 1;
+				currentInput.value = 1;
 			}
 			
             EndAction(true);

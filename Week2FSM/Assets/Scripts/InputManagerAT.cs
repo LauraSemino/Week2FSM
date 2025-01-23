@@ -15,7 +15,7 @@ namespace NodeCanvas.Tasks.Actions {
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
             agentBlackboard = agent.GetComponent<Blackboard>();
-			//currentInput = 1;
+			
             return null;
 		}
 

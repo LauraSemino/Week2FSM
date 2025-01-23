@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using TMPro;
 using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
@@ -7,9 +8,12 @@ namespace NodeCanvas.Tasks.Actions {
 	public class Style_ManagerAT : ActionTask {
 		public Blackboard agentBlackboard;
 		public BBParameter<GameObject> Input;
-		float localStyle;
-		float localScore;
-		float scoreMult;
+		public BBParameter<float> localStyle;
+		public BBParameter<float> localScore;
+        public TextMeshPro styleTXT;
+        public TextMeshPro scoreTXT;
+        float scoreMult;
+		float timer;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
@@ -22,14 +26,25 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			EndAction(true);
+			//EndAction(true);
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
+
+			timer += Time.deltaTime;
 			
-			localStyle = agentBlackboard.GetVariableValue<float>("Style");
-			localStyle -= Time.deltaTime;
+			scoreMult = 1f;
+			if (localStyle.value >= 0 && timer >= 1)
+			{
+                //localStyle.value -= scoreMult;
+				timer = 0;
+            }
+			if (localStyle.value < 0)
+			{
+				localStyle.value = 0;
+			}
+			
 			//agentBlackboard.SetVariableValue<float>("Style", localStyle);
 		}
 

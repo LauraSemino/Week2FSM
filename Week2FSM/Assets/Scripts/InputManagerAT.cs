@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace NodeCanvas.Tasks.Actions {
 	public class InputManagerAT : ActionTask {
         public Blackboard agentBlackboard;
 		public BBParameter<int> currentInput;
+		public TextMeshPro nextInputTXT;
+	
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
@@ -29,7 +32,25 @@ namespace NodeCanvas.Tasks.Actions {
 			{
 				currentInput.value = 1;
 			}
-			
+			if (currentInput.value == 1)
+			{
+				nextInputTXT.text = "Input: W";
+			}
+            if (currentInput.value == 2)
+            {
+                nextInputTXT.text = "Input: D";
+            }
+            if (currentInput.value == 3)
+            {
+                nextInputTXT.text = "Input: S";
+            }
+            if (currentInput.value == 4)
+            {
+                nextInputTXT.text = "Input: A";
+            }
+
+
+
             EndAction(true);
 		}
 

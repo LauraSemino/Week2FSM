@@ -13,6 +13,7 @@ namespace NodeCanvas.Tasks.Actions {
         public TextMeshPro styleTXT;
         public TextMeshPro scoreTXT;
         float scoreMult;
+		public string styleLvl;
 		float timer;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -44,7 +45,7 @@ namespace NodeCanvas.Tasks.Actions {
 			{
 				localStyle.value = 0;
 			}
-			styleTXT.text = ("Style: " + localStyle.value);
+			styleTXT.text = ("Style: " + styleLvl + " (" + localStyle.value + ")");
 			//agentBlackboard.SetVariableValue<float>("Style", localStyle);
 		}
 

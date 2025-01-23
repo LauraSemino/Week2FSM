@@ -11,8 +11,8 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<float> localStyle;
 		public BBParameter<float> localScore;
         public TextMeshPro styleTXT;
-        public TextMeshPro scoreTXT;
-        float scoreMult;
+        //public TextMeshPro scoreTXT;
+        public float styleDecay;
 		public string styleLvl;
 		float timer;
 		//Use for initialization. This is called only once in the lifetime of the task.
@@ -35,10 +35,10 @@ namespace NodeCanvas.Tasks.Actions {
 
 			timer += Time.deltaTime;
 			
-			scoreMult = 1f;
+			//scoreMult = 1f;
 			if (localStyle.value >= 0 && timer >= 1)
 			{
-                localStyle.value -= scoreMult;
+                localStyle.value -= styleDecay;
 				timer = 0;
             }
 			if (localStyle.value < 0)
@@ -46,8 +46,9 @@ namespace NodeCanvas.Tasks.Actions {
 				localStyle.value = 0;
 			}
 			styleTXT.text = ("Style: " + styleLvl + " (" + localStyle.value + ")");
-			//agentBlackboard.SetVariableValue<float>("Style", localStyle);
-		}
+            //scoreTXT.text = ("Score: " + localScore.value);
+            //agentBlackboard.SetVariableValue<float>("Style", localStyle);
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {

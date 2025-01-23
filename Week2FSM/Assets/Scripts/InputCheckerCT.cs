@@ -9,14 +9,16 @@ namespace NodeCanvas.Tasks.Conditions {
         public BBParameter<int> currentInput;
         public Blackboard agentBlackboard;
 		public Blackboard styleBlackboard;
+        //public Blackboard scoreBlackboard;
 		float addStyle;
         public BBParameter<GameObject> Style;
+       // public BBParameter<GameObject> Score;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit(){
             agentBlackboard = agent.GetComponent<Blackboard>();
 			styleBlackboard = Style.value.GetComponent<Blackboard>();
-            
+            //scoreBlackboard = Score.value.GetComponent<Blackboard>();
             return null;
 		}
 

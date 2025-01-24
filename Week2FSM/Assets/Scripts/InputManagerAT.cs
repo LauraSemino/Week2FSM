@@ -7,9 +7,9 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions {
 
 	public class InputManagerAT : ActionTask {
-        public Blackboard agentBlackboard;
+        public BBParameter<Blackboard> agentBlackboard;
 		public BBParameter<int> currentInput;
-		public TextMeshPro nextInputTXT;
+		public BBParameter<TextMeshPro> nextInputTXT;
 	
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -34,19 +34,19 @@ namespace NodeCanvas.Tasks.Actions {
 			}
 			if (currentInput.value == 1)
 			{
-				nextInputTXT.text = "Input: W";
+				nextInputTXT.value.text = "Input: W";
 			}
             if (currentInput.value == 2)
             {
-                nextInputTXT.text = "Input: D";
+                nextInputTXT.value.text = "Input: D";
             }
             if (currentInput.value == 3)
             {
-                nextInputTXT.text = "Input: S";
+                nextInputTXT.value.text = "Input: S";
             }
             if (currentInput.value == 4)
             {
-                nextInputTXT.text = "Input: A";
+                nextInputTXT.value.text = "Input: A";
             }
 
 

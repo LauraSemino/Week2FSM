@@ -8,7 +8,7 @@ namespace NodeCanvas.Tasks.Conditions {
 	public class InputCheckerCT : ConditionTask {
         public BBParameter<int> currentInput;
         public Blackboard agentBlackboard;
-		public Blackboard styleBlackboard;
+		public BBParameter<Blackboard> styleBlackboard;
         //public Blackboard scoreBlackboard;
 		float addStyle;
         public BBParameter<GameObject> Style;
@@ -35,33 +35,34 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-            addStyle = styleBlackboard.GetVariableValue<float>("Style");
+            addStyle = styleBlackboard.value.GetVariableValue<float>("Style");
             if (currentInput.value == 1 && Input.GetKeyDown(KeyCode.W))
 			{
 				addStyle += 1;
-                styleBlackboard.SetVariableValue("Style",addStyle);
+                styleBlackboard.value.SetVariableValue("Style",addStyle);
                 return true;
             }
 			else if(currentInput.value == 2 && Input.GetKeyDown(KeyCode.D))
 			{
                 addStyle += 1;
-                styleBlackboard.SetVariableValue("Style", addStyle);
+                styleBlackboard.value.SetVariableValue("Style", addStyle);
                 return true;
             }
             else if (currentInput.value == 3 && Input.GetKeyDown(KeyCode.S))
             {
                 addStyle += 1;
-                styleBlackboard.SetVariableValue("Style", addStyle);
+                styleBlackboard.value.SetVariableValue("Style", addStyle);
                 return true;
             }
             else if (currentInput.value == 4 && Input.GetKeyDown(KeyCode.A))
             {
                 addStyle += 1;
-                styleBlackboard.SetVariableValue("Style", addStyle);
+                styleBlackboard.value.SetVariableValue("Style", addStyle);
                 return true;
             }
             else
 			{
+                
 				return false;
 			}
 			
